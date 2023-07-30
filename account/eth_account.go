@@ -4,6 +4,7 @@ import (
 	"crypto/ecdsa"
 	"fmt"
 
+	"github.com/MysGate/go-fundamental/util"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
 )
@@ -22,7 +23,7 @@ func NewEthAccount() *EthAccount {
 	privateKey, err := crypto.GenerateKey()
 	if err != nil {
 		errMsg := fmt.Sprintf("NewEthAccount err:%+v", err)
-		Logger().Error(errMsg)
+		util.Logger().Error(errMsg)
 		return nil
 	}
 
@@ -32,7 +33,7 @@ func NewEthAccount() *EthAccount {
 	publicKey := privateKey.Public()
 	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
 	if !ok {
-		Logger().Error("cannot assert type: publicKey is not of type *ecdsa.PublicKey")
+		util.Logger().Error("cannot assert type: publicKey is not of type *ecdsa.PublicKey")
 		return nil
 	}
 
