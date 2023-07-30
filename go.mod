@@ -3,11 +3,16 @@ module github.com/MysGate/go-fundamental
 go 1.19
 
 require (
+	github.com/btcsuite/btcd v0.23.4
+	github.com/btcsuite/btcd/btcec/v2 v2.2.0
+	github.com/btcsuite/btcd/btcutil v1.1.3
+	github.com/btcsuite/btcd/chaincfg/chainhash v1.0.1
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/cskr/pubsub v1.0.2
 	github.com/ethereum/go-ethereum v1.12.0
 	github.com/go-xorm/xorm v0.7.9
 	github.com/natefinch/lumberjack v2.0.0+incompatible
+	github.com/pkg/errors v0.9.1
 	github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24
 	go.uber.org/zap v1.24.0
 )
@@ -15,8 +20,11 @@ require (
 require (
 	github.com/BurntSushi/toml v1.3.2 // indirect
 	github.com/StackExchange/wmi v0.0.0-20180116203802-5d049714c4a6 // indirect
-	github.com/btcsuite/btcd/btcec/v2 v2.2.0 // indirect
+	github.com/btcsuite/btclog v0.0.0-20170628155309-84c8d2346e9f // indirect
+	github.com/btcsuite/go-socks v0.0.0-20170105172521-4720035b7bfd // indirect
+	github.com/btcsuite/websocket v0.0.0-20150119174127-31079b680792 // indirect
 	github.com/deckarep/golang-set/v2 v2.1.0 // indirect
+	github.com/decred/dcrd/crypto/blake256 v1.0.0 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-ole/go-ole v1.2.1 // indirect
