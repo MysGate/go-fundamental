@@ -1,4 +1,4 @@
-package util
+package account
 
 import (
 	"crypto/ecdsa"
