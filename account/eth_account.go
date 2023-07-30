@@ -10,13 +10,13 @@ import (
 )
 
 type EthAccount struct {
-	privateKey string
-	address    string
-	publicKey  string
+	PrivateKey string
+	Address    string
+	PublicKey  string
 }
 
 func (ea *EthAccount) ToString() string {
-	return fmt.Sprintf("%s:%s", ea.address, ea.privateKey)
+	return fmt.Sprintf("%s:%s", ea.Address, ea.PrivateKey)
 }
 
 func NewEthAccount() *EthAccount {
@@ -44,9 +44,9 @@ func NewEthAccount() *EthAccount {
 	fmt.Println(address)
 
 	ea := &EthAccount{
-		address:    address,
-		publicKey:  hexutil.Encode(publicKeyBytes)[4:],
-		privateKey: hexutil.Encode(privateKeyBytes)[2:],
+		Address:    address,
+		PublicKey:  hexutil.Encode(publicKeyBytes)[4:],
+		PrivateKey: hexutil.Encode(privateKeyBytes)[2:],
 	}
 	return ea
 }
