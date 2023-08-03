@@ -1,4 +1,4 @@
-package mempool
+package txpool
 
 import (
 	"bytes"
@@ -12,7 +12,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (c *MempoolClient) GetRawTransaction(txHash *chainhash.Hash) (*wire.MsgTx, error) {
+func (c *TxpoolClient) GetRawTransaction(txHash *chainhash.Hash) (*wire.MsgTx, error) {
 	res, err := c.request(http.MethodGet, fmt.Sprintf("/tx/%s/raw", txHash.String()), nil)
 	if err != nil {
 		return nil, err
@@ -25,7 +25,7 @@ func (c *MempoolClient) GetRawTransaction(txHash *chainhash.Hash) (*wire.MsgTx, 
 	return tx, nil
 }
 
-func (c *MempoolClient) BroadcastTx(tx *wire.MsgTx) (*chainhash.Hash, error) {
+func (c *TxpoolClient) BroadcastTx(tx *wire.MsgTx) (*chainhash.Hash, error) {
 	var buf bytes.Buffer
 	if err := tx.Serialize(&buf); err != nil {
 		return nil, err
