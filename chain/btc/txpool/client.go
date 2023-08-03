@@ -1,4 +1,4 @@
-package mempool
+package txpool
 
 import (
 	"io"
@@ -9,11 +9,11 @@ import (
 	"github.com/btcsuite/btcd/wire"
 )
 
-type MempoolClient struct {
+type TxpoolClient struct {
 	baseURL string
 }
 
-func NewClient(netParams *chaincfg.Params) *MempoolClient {
+func NewClient(netParams *chaincfg.Params) *TxpoolClient {
 	baseURL := ""
 	if netParams.Net == wire.MainNet {
 		baseURL = "https://mempool.space/api"
@@ -24,13 +24,13 @@ func NewClient(netParams *chaincfg.Params) *MempoolClient {
 	} else {
 		log.Fatal("mempool don't support other netParams")
 	}
-	return &MempoolClient{
+	return &TxpoolClient{
 		baseURL: baseURL,
 	}
 }
 
-func (c *MempoolClient) request(method, subPath string, requestBody io.Reader) ([]byte, error) {
+func (c *TxpoolClient) request(method, subPath string, requestBody io.Reader) ([]byte, error) {
 	return btcapi.Request(method, c.baseURL, subPath, requestBody)
 }
 
-var _ btcapi.BTCAPIClient = (*MempoolClient)(nil)
+var _ btcapi.BTCAPIClient = (*TxpoolClient)(nil)
