@@ -385,5 +385,3 @@ func AS2BSTrade(wif string, receivers []*Target, netParams *chaincfg.Params) (tx
 
 	return
 }
-
-// multisig transaction
