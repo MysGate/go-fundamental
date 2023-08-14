@@ -134,7 +134,8 @@ func buildTxin(redeemTx *wire.MsgTx, out *btcapi.UnspentOutput) (pkScript string
 	outPoint := wire.NewOutPoint(&out.Outpoint.Hash, out.Outpoint.Index)
 	txIn := wire.NewTxIn(outPoint, nil, nil)
 	redeemTx.AddTxIn(txIn)
-	pkScript = string(out.Output.PkScript)
+
+	pkScript = hex.EncodeToString(out.Output.PkScript)
 	return
 }
 
