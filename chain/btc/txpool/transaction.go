@@ -23,7 +23,7 @@ func (c *TxpoolClient) GetRawTransaction(txHash *chainhash.Hash) (*wire.MsgTx, e
 		return nil, err
 	}
 	return tx, nil
-}
+} 
 
 func (c *TxpoolClient) BroadcastTx(tx *wire.MsgTx) (*chainhash.Hash, error) {
 	var buf bytes.Buffer
