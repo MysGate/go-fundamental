@@ -1,0 +1,5 @@
+package trade
+
+func MakeOrder() {
+
+}
