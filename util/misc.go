@@ -14,6 +14,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shopspring/decimal"
 )
@@ -147,4 +148,18 @@ func TxWaitToSync(ctx context.Context, client *ethclient.Client, tx *types.Trans
 	}
 
 	return receipt, receipt.Status == types.ReceiptStatusSuccessful, nil
+}
+
+func PrivateToAddress(key string) (string, error) {
+	privateKey, err := crypto.HexToECDSA(key)
+	if err != nil {
+		return "", err
+	}
+	publicKey := privateKey.Public()
+	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
+	if !ok {
+		return "", err
+	}
+	addr := crypto.PubkeyToAddress(*publicKeyECDSA).Hex()
+	return addr, nil
 }
