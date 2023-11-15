@@ -140,7 +140,7 @@ func CreateTransactionOpts(client *ethclient.Client, key *ecdsa.PrivateKey, chai
 }
 
 func TxWaitToSync(ctx context.Context, client *ethclient.Client, tx *types.Transaction) (*types.Receipt, bool, error) {
-	receipt, err := bind.WaitMined(context.Background(), client, tx)
+	receipt, err := bind.WaitMined(ctx, client, tx)
 	if err != nil {
 		errMsg := fmt.Sprintf("TxWaitToSync:bind.WaitMine err: %+v", err)
 		Logger().Error(errMsg)
